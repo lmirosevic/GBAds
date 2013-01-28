@@ -7,12 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A2CC29A16B6AFD4007A2CBA /* RevMobAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A2CC29916B6AFD4007A2CBA /* RevMobAds.framework */; };
+		8A2CC2B116B6B287007A2CBA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A2CC2B016B6B287007A2CBA /* QuartzCore.framework */; };
+		8A2CC2B316B6B28B007A2CBA /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A2CC2B216B6B28B007A2CBA /* SystemConfiguration.framework */; };
+		8A2CC2B516B6B291007A2CBA /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A2CC2B416B6B291007A2CBA /* StoreKit.framework */; };
+		8A2CC2B716B6B298007A2CBA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A2CC2B616B6B298007A2CBA /* CoreGraphics.framework */; };
+		8A2CC2B916B6B2A0007A2CBA /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A2CC2B816B6B2A0007A2CBA /* GameKit.framework */; };
 		8A8EC1D616B693FE007E268F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A8EC1D516B693FE007E268F /* Foundation.framework */; };
 		8A8EC1DB16B693FE007E268F /* GBAds.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A8EC1DA16B693FE007E268F /* GBAds.h */; };
 		8A8EC1DD16B693FE007E268F /* GBAds.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A8EC1DC16B693FE007E268F /* GBAds.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		8A2CC2F816B6C9D0007A2CBA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8A2CC2F416B6C9D0007A2CBA /* GBVersionTracking.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8A2CC2C516B6B987007A2CBA;
+			remoteInfo = GBVersionTracking;
+		};
 		8A8EC24616B69FF0007E268F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 8A8EC24116B69FF0007E268F /* GBToolbox.xcodeproj */;
@@ -43,6 +56,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8A2CC29916B6AFD4007A2CBA /* RevMobAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RevMobAds.framework; sourceTree = "<group>"; };
+		8A2CC29E16B6AFF9007A2CBA /* Chartboost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Chartboost.h; sourceTree = "<group>"; };
+		8A2CC29F16B6AFF9007A2CBA /* libChartboost.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libChartboost.a; sourceTree = "<group>"; };
+		8A2CC2B016B6B287007A2CBA /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		8A2CC2B216B6B28B007A2CBA /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		8A2CC2B416B6B291007A2CBA /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		8A2CC2B616B6B298007A2CBA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		8A2CC2B816B6B2A0007A2CBA /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		8A2CC2F416B6C9D0007A2CBA /* GBVersionTracking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GBVersionTracking.xcodeproj; path = "/Users/lm/Dropbox/Projects/VLC Remote/iOS app/VLC Remote iOS/../../../Goonbee Modules/GBVersionTracking/GBVersionTracking.xcodeproj"; sourceTree = "<absolute>"; };
 		8A8EC1D216B693FE007E268F /* libGBAds.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libGBAds.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A8EC1D516B693FE007E268F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8A8EC1D916B693FE007E268F /* GBAds-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GBAds-Prefix.pch"; sourceTree = "<group>"; };
@@ -57,16 +79,57 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A2CC2B916B6B2A0007A2CBA /* GameKit.framework in Frameworks */,
+				8A2CC2B716B6B298007A2CBA /* CoreGraphics.framework in Frameworks */,
+				8A2CC2B516B6B291007A2CBA /* StoreKit.framework in Frameworks */,
+				8A2CC2B316B6B28B007A2CBA /* SystemConfiguration.framework in Frameworks */,
+				8A2CC2B116B6B287007A2CBA /* QuartzCore.framework in Frameworks */,
 				8A8EC1D616B693FE007E268F /* Foundation.framework in Frameworks */,
+				8A2CC29A16B6AFD4007A2CBA /* RevMobAds.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8A2CC29516B6AD6C007A2CBA /* Ad Networks */ = {
+			isa = PBXGroup;
+			children = (
+				8A2CC29C16B6AFEE007A2CBA /* Chartboost */,
+				8A2CC29B16B6AFE9007A2CBA /* Revmob */,
+			);
+			name = "Ad Networks";
+			sourceTree = "<group>";
+		};
+		8A2CC29B16B6AFE9007A2CBA /* Revmob */ = {
+			isa = PBXGroup;
+			children = (
+				8A2CC29916B6AFD4007A2CBA /* RevMobAds.framework */,
+			);
+			name = Revmob;
+			sourceTree = "<group>";
+		};
+		8A2CC29C16B6AFEE007A2CBA /* Chartboost */ = {
+			isa = PBXGroup;
+			children = (
+				8A2CC29E16B6AFF9007A2CBA /* Chartboost.h */,
+				8A2CC29F16B6AFF9007A2CBA /* libChartboost.a */,
+			);
+			name = Chartboost;
+			sourceTree = "<group>";
+		};
+		8A2CC2F516B6C9D0007A2CBA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8A2CC2F916B6C9D0007A2CBA /* libGBVersionTracking.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		8A8EC1C716B693FE007E268F = {
 			isa = PBXGroup;
 			children = (
+				8A2CC29516B6AD6C007A2CBA /* Ad Networks */,
 				8A8EC24A16B69FF4007E268F /* Libraries */,
 				8A8EC1D716B693FE007E268F /* GBAds */,
 				8A8EC1D416B693FE007E268F /* Frameworks */,
@@ -85,6 +148,11 @@
 		8A8EC1D416B693FE007E268F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8A2CC2B816B6B2A0007A2CBA /* GameKit.framework */,
+				8A2CC2B616B6B298007A2CBA /* CoreGraphics.framework */,
+				8A2CC2B416B6B291007A2CBA /* StoreKit.framework */,
+				8A2CC2B216B6B28B007A2CBA /* SystemConfiguration.framework */,
+				8A2CC2B016B6B287007A2CBA /* QuartzCore.framework */,
 				8A8EC1D516B693FE007E268F /* Foundation.framework */,
 			);
 			name = Frameworks;
@@ -121,6 +189,7 @@
 		8A8EC24A16B69FF4007E268F /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				8A2CC2F416B6C9D0007A2CBA /* GBVersionTracking.xcodeproj */,
 				8A8EC24116B69FF0007E268F /* GBToolbox.xcodeproj */,
 			);
 			name = Libraries;
@@ -170,6 +239,10 @@
 					ProductGroup = 8A8EC24216B69FF0007E268F /* Products */;
 					ProjectRef = 8A8EC24116B69FF0007E268F /* GBToolbox.xcodeproj */;
 				},
+				{
+					ProductGroup = 8A2CC2F516B6C9D0007A2CBA /* Products */;
+					ProjectRef = 8A2CC2F416B6C9D0007A2CBA /* GBVersionTracking.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -179,6 +252,13 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		8A2CC2F916B6C9D0007A2CBA /* libGBVersionTracking.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libGBVersionTracking.a;
+			remoteRef = 8A2CC2F816B6C9D0007A2CBA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		8A8EC24716B69FF0007E268F /* libGBToolbox.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -262,8 +342,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DSTROOT = /tmp/GBAds.dst;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GBAds/GBAds-Prefix.pch";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -274,8 +362,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DSTROOT = /tmp/GBAds.dst;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GBAds/GBAds-Prefix.pch";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

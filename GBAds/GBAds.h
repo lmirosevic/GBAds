@@ -10,15 +10,29 @@
 
 #import "GBAdsNetworks.h"
 
-@interface GBAds : NSObject
+#import "ChartBoost.h"
+#import <RevMobAds/RevMobAds.h>
+
+@interface GBAds : NSObject <RevMobAdsDelegate, ChartboostDelegate>
+
+@property (assign, nonatomic) BOOL      adsEnabled;                                             //defaults to YES
+@property (assign, nonatomic) BOOL      showAdsDuringFirstSession;                              //defaults to YES
 
 +(GBAds *)sharedAds;
 
 -(void)connectNetwork:(GBAdsNetwork)network withCredentials:(NSString *)credentials, ...;
--(void)configureAdLogic:(GBAdsNetwork)network, ...; //0 terminated
+-(void)configureAdLogic:(GBAdsNetwork)network, ...;                                             //[[GBAds sharedAds] configureAdLogic:GBAdNetworkRevmob, GBAdNetworkRevmob, GBAdNetworkRevmob, GBAdNetworkChartboost, GBAdNetworkChartboost, 0];
 -(void)showAd;
 
-
-//-(void)setAdLogic:(NSDictionary *)adLogic; //@[@(GBAdNetworkRevmob), @(GBAdNetworkRevmob), @(GBAdNetworkRevmob), @(GBAdNetworkChartboost)]
-
 @end
+
+/* Demo
+ 
+ [[GBAds sharedAds] connectNetwork:GBAdNetworkRevmob withCredentials:@"123"];
+ [[GBAds sharedAds] connectNetwork:GBAdNetworkChartboost withCredentials:@"456", @"789"];
+ 
+ [[GBAds sharedAds] configureAdLogic:GBAdNetworkRevmob, GBAdNetworkRevmob, GBAdNetworkRevmob, GBAdNetworkChartboost, GBAdNetworkChartboost, 0];
+ 
+ [[GBAds sharedAds] showAd];
+
+*/

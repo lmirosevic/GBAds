@@ -8,17 +8,23 @@
 
 #import "GBAds.h"
 
-static NSString *kAdNetworkRevmob = @"AdNetworkRevmob";
-static NSString *kAdCredentialsRevmobAppID = @"kAdCredentialsRevmobAppID";
+static NSString *kGBAdNetworkRevmob = @"kGBAdNetworkRevmob";
+static NSString *kGBAdCredentialsRevmobAppID = @"kGBAdCredentialsRevmobAppID";
 
-static NSString *kAdNetworkChartboost = @"AdNetworkChartboost";
-static NSString *kAdCredentialsChartboostAppID = @"kAdCredentialsChartboostAppID";
-static NSString *kAdCredentialsChartboostAppSignature = @"kAdCredentialsChartboostAppSignature";
+static NSString *kGBAdNetworkChartboost = @"kGBAdNetworkChartboost";
+static NSString *kGBAdCredentialsChartboostAppID = @"kGBAdCredentialsChartboostAppID";
+static NSString *kGBAdCredentialsChartboostAppSignature = @"kGBAdCredentialsChartboostAppSignature";
+
 
 @interface GBAds ()
 
-@property (strong, nonatomic) NSMutableDictionary *enabledAdNetworks;
-@property (strong, nonatomic) NSMutableArray *adLogic;
+@property (strong, nonatomic) NSMutableDictionary                   *connectedAdNetworks;
+@property (strong, nonatomic) NSMutableArray                        *adLogic;
+@property (assign, nonatomic) BOOL                                  isInProcess;
+@property (assign, nonatomic) NSUInteger                            nextAttempt;
+
+//Ad network specific
+@property (strong, nonatomic) RevMobFullscreen                      *revmobAd;
 
 @end
 
@@ -28,8 +34,20 @@ static NSString *kAdCredentialsChartboostAppSignature = @"kAdCredentialsChartboo
 #pragma mark - Storage
 
 _singleton(GBAds, sharedAds)
-_lazy(NSMutableDictionary, enabledAdNetworks, _enabledAdNetworks)
+_lazy(NSMutableDictionary, connectedAdNetworks, _connectedAdNetworks)
 _lazy(NSMutableArray, adLogic, _adLogic)
+
+#pragma mark - Initialiser
+
+-(id)init {
+    if (self = [super init]) {
+        self.adsEnabled = YES;
+        self.showAdsDuringFirstSession = YES;
+        self.nextAttempt = 0;
+    }
+    
+    return self;
+}
 
 #pragma mark - Public API
 
@@ -37,7 +55,9 @@ _lazy(NSMutableArray, adLogic, _adLogic)
     switch (network) {
         case GBAdNetworkRevmob: {
             if (IsValidString(credentials)) {
-                self.enabledAdNetworks[kAdNetworkRevmob] = @{kAdCredentialsRevmobAppID: credentials};
+                self.connectedAdNetworks[kGBAdNetworkRevmob] = @{kGBAdCredentialsRevmobAppID: credentials};
+                
+                [RevMobAds startSessionWithAppID:self.connectedAdNetworks[kGBAdNetworkRevmob][kGBAdCredentialsRevmobAppID]];
             }
             else {
                 NSAssert(NO, @"GBAds: Didn't pass valid credentials for Revmob");
@@ -54,7 +74,11 @@ _lazy(NSMutableArray, adLogic, _adLogic)
             va_end(args);
             
             if (IsValidString(appID) && IsValidString(appSignature)) {
-                self.enabledAdNetworks[kAdNetworkChartboost] = @{kAdCredentialsChartboostAppID: appID, kAdCredentialsChartboostAppSignature: appSignature};
+                self.connectedAdNetworks[kGBAdNetworkChartboost] = @{kGBAdCredentialsChartboostAppID: appID, kGBAdCredentialsChartboostAppSignature: appSignature};
+                
+                [Chartboost sharedChartboost].appId = self.connectedAdNetworks[kGBAdNetworkChartboost][kGBAdCredentialsChartboostAppID];
+                [Chartboost sharedChartboost].appSignature = self.connectedAdNetworks[kGBAdNetworkChartboost][kGBAdCredentialsChartboostAppSignature];
+                [[Chartboost sharedChartboost] startSession];
             }
             else {
                 NSAssert(NO, @"GBAds: Didn't pass valid credentials for Chartboost");
@@ -82,10 +106,105 @@ _lazy(NSMutableArray, adLogic, _adLogic)
 }
 
 -(void)showAd {
-    //get the enabled networks
-    //get the ad logic and make sure it doesnt reference any network which isnt enabled
+    if (!self.isInProcess && self.adsEnabled && !([GBVersionTracking isFirstLaunchEver] && (self.showAdsDuringFirstSession == NO))) {
+        //reset next
+        self.nextAttempt = 0;
+        
+        //execute first ad code
+        [self _attemptToShowNextAd];
+    }
+}
+
+#pragma mark - Private
+
+-(void)_attemptToShowNextAd {
+    //if theres no attempts remaining, return early
+    if (self.adLogic.count <= self.nextAttempt) {
+        self.isInProcess = NO;
+        return;
+    }
     
-    //execute ad code in the appropriate order
+    //find out which ad to show and then show it
+    GBAdsNetwork network = [self.adLogic[self.nextAttempt] intValue];
+    
+    //increment next attempt before doing anything else to prevent infinite loops if the subsequently calling code would cause this method to be called in the current run loop
+    self.nextAttempt += 1;
+    
+    switch (network) {
+        case GBAdNetworkRevmob: {
+            if (self.connectedAdNetworks[kGBAdNetworkRevmob]) {
+                self.revmobAd = [[RevMobAds session] fullscreen];
+                self.revmobAd.delegate = self;
+                [self.revmobAd loadAd];
+            }
+            else {
+                l(@"GBAds: Connect to Revmob first!");
+                
+                [self _internalFail];
+            }
+        } break;
+            
+        case GBAdNetworkChartboost: {
+            if (self.connectedAdNetworks[kGBAdNetworkChartboost]) {
+                [Chartboost sharedChartboost].delegate = self;
+                [[Chartboost sharedChartboost] showInterstitial];
+            }
+            else {
+                l(@"GBAds: Connect to Chartboost first!");
+                
+                [self _internalFail];
+            }
+        } break;
+            
+        default:
+            break;
+    }
+}
+
+-(void)_adSuccess {
+    self.isInProcess = NO;
+}
+
+-(void)_adFail {
+    [self _attemptToShowNextAd];
+}
+
+#pragma mark - Revmob delegate
+
+-(void)revmobAdDidReceive {
+    l(@"did receive");
+    [self.revmobAd showAd];
+}
+
+- (void)revmobAdDisplayed {
+    l(@"rev success");
+    [self _adSuccess];
+}
+
+- (void)revmobAdDidFailWithError:(NSError *)error {
+    l(@"rev fail delegate");
+    [self _adFail];
+}
+
+#pragma mark - Chartboost delegate
+
+-(BOOL)shouldDisplayInterstitial:(NSString *)location {
+    l(@"chart success");
+    [self _adSuccess];
+    
+    return YES;
+}
+
+-(void)didFailToLoadInterstitial:(NSString *)location {
+    l(@"chart fail");
+    [self _adFail];
+}
+
+#pragma mark - Internal pseudo-delegate
+
+-(void)_internalFail {
+    l(@"internal fail");
+    [self _adFail];
 }
 
 @end
