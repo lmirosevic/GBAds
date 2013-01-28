@@ -8,6 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
+#import "GBAdsNetworks.h"
+
 @interface GBAds : NSObject
+
++(GBAds *)sharedAds;
+
+-(void)connectNetwork:(GBAdsNetwork)network withCredentials:(NSString *)credentials, ...;
+-(void)configureAdLogic:(GBAdsNetwork)network, ...; //0 terminated
+-(void)showAd;
+
+
+//-(void)setAdLogic:(NSDictionary *)adLogic; //@[@(GBAdNetworkRevmob), @(GBAdNetworkRevmob), @(GBAdNetworkRevmob), @(GBAdNetworkChartboost)]
 
 @end
