@@ -118,6 +118,7 @@ _lazy(NSMutableArray, adLogic, _adLogic)
 -(void)_attemptToShowNextAd {
     //if theres no attempts remaining, return early
     if (self.adLogic.count <= self.nextAttempt) {
+        _t(@"GBAds: Not showing ad");
         self.isInProcess = NO;
         return;
     }
@@ -160,48 +161,49 @@ _lazy(NSMutableArray, adLogic, _adLogic)
 }
 
 -(void)_adSuccess {
+    _t(@"GBAds: Showing ad");
     self.isInProcess = NO;
 }
 
 -(void)_adFail {
+    _t(@"GBAds: Ad failed attempt");
     [self _attemptToShowNextAd];
 }
 
 #pragma mark - Revmob delegate
 
 -(void)revmobAdDidReceive {
-    l(@"did receive");
     [self.revmobAd showAd];
 }
 
 - (void)revmobAdDisplayed {
-    l(@"rev success");
+    _t(@"GBAds: Revmob Success");
     [self _adSuccess];
 }
 
 - (void)revmobAdDidFailWithError:(NSError *)error {
-    l(@"rev fail delegate");
+    _t(@"GBAds: Revmob Fail");
     [self _adFail];
 }
 
 #pragma mark - Chartboost delegate
 
 -(BOOL)shouldDisplayInterstitial:(NSString *)location {
-    l(@"chart success");
+    _t(@"GBAds: Chartboost Success");
     [self _adSuccess];
     
     return YES;
 }
 
 -(void)didFailToLoadInterstitial:(NSString *)location {
-    l(@"chart fail");
+    _t(@"GBAds: Chartboost Fail");
     [self _adFail];
 }
 
 #pragma mark - Internal pseudo-delegate
 
 -(void)_internalFail {
-    l(@"internal fail");
+    _t(@"GBAds: Internal Fail");
     [self _adFail];
 }
 

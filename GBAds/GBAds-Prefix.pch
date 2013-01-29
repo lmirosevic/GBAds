@@ -8,3 +8,4 @@
 
 #import "GBToolbox.h"
 #import "GBVersionTracking.h"
+#import "GBAnalytics.h"

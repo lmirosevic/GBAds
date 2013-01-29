@@ -25,11 +25,15 @@
 
 /* Demo
  
+ //Call this in application:didFinishLaunching:withOptions:
  [[GBAds sharedAds] connectNetwork:GBAdNetworkRevmob withCredentials:@"123"];
  [[GBAds sharedAds] connectNetwork:GBAdNetworkChartboost withCredentials:@"456", @"789"];
- 
  [[GBAds sharedAds] configureAdLogic:GBAdNetworkRevmob, GBAdNetworkRevmob, GBAdNetworkRevmob, GBAdNetworkChartboost, GBAdNetworkChartboost, 0];
- 
- [[GBAds sharedAds] showAd];
 
+ //Call this anywhere
+ [[GBAds sharedAds] showAd];
+ 
+ Required frameworks:
+ * donno
+ 
 */

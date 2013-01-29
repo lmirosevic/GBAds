@@ -41,6 +41,13 @@
 			remoteGlobalIDString = 8A0C4E34165FA60C00A990FB;
 			remoteInfo = GBToolboxUnitTests;
 		};
+		8AF6864716B7F18800FEF6A7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8AF6863F16B7F18800FEF6A7 /* GBAnalytics.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8A45A82316B7C2C100414137;
+			remoteInfo = GBAnalytics;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -73,6 +80,7 @@
 		8A8EC1DC16B693FE007E268F /* GBAds.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GBAds.m; sourceTree = "<group>"; };
 		8A8EC23D16B69968007E268F /* GBAdsNetworks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBAdsNetworks.h; sourceTree = "<group>"; };
 		8A8EC24116B69FF0007E268F /* GBToolbox.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GBToolbox.xcodeproj; path = "/Users/lm/Dropbox/Projects/VLC Remote/iOS app/VLC Remote iOS/../../../Goonbee Modules/GBToolbox/GBToolbox.xcodeproj"; sourceTree = "<absolute>"; };
+		8AF6863F16B7F18800FEF6A7 /* GBAnalytics.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = GBAnalytics.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,10 +199,19 @@
 		8A8EC24A16B69FF4007E268F /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				8AF6863F16B7F18800FEF6A7 /* GBAnalytics.xcodeproj */,
 				8A2CC2F416B6C9D0007A2CBA /* GBVersionTracking.xcodeproj */,
 				8A8EC24116B69FF0007E268F /* GBToolbox.xcodeproj */,
 			);
 			name = Libraries;
+			sourceTree = "<group>";
+		};
+		8AF6864016B7F18800FEF6A7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8AF6864816B7F18800FEF6A7 /* libGBAnalytics.a */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -238,6 +255,10 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
+					ProductGroup = 8AF6864016B7F18800FEF6A7 /* Products */;
+					ProjectRef = 8AF6863F16B7F18800FEF6A7 /* GBAnalytics.xcodeproj */;
+				},
+				{
 					ProductGroup = 8A8EC24216B69FF0007E268F /* Products */;
 					ProjectRef = 8A8EC24116B69FF0007E268F /* GBToolbox.xcodeproj */;
 				},
@@ -275,6 +296,13 @@
 			remoteRef = 8A8EC24816B69FF0007E268F /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		8AF6864816B7F18800FEF6A7 /* libGBAnalytics.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libGBAnalytics.a;
+			remoteRef = 8AF6864716B7F18800FEF6A7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -299,6 +327,7 @@
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = "../**";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -328,6 +357,7 @@
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = "../**";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
