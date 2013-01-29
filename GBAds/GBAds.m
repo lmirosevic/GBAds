@@ -8,10 +8,8 @@
 
 #import "GBAds.h"
 
-static NSString *kGBAdNetworkRevmob = @"kGBAdNetworkRevmob";
 static NSString *kGBAdCredentialsRevmobAppID = @"kGBAdCredentialsRevmobAppID";
 
-static NSString *kGBAdNetworkChartboost = @"kGBAdNetworkChartboost";
 static NSString *kGBAdCredentialsChartboostAppID = @"kGBAdCredentialsChartboostAppID";
 static NSString *kGBAdCredentialsChartboostAppSignature = @"kGBAdCredentialsChartboostAppSignature";
 
@@ -55,9 +53,9 @@ _lazy(NSMutableArray, adLogic, _adLogic)
     switch (network) {
         case GBAdNetworkRevmob: {
             if (IsValidString(credentials)) {
-                self.connectedAdNetworks[kGBAdNetworkRevmob] = @{kGBAdCredentialsRevmobAppID: credentials};
+                self.connectedAdNetworks[@(GBAdNetworkRevmob)] = @{kGBAdCredentialsRevmobAppID: credentials};
                 
-                [RevMobAds startSessionWithAppID:self.connectedAdNetworks[kGBAdNetworkRevmob][kGBAdCredentialsRevmobAppID]];
+                [RevMobAds startSessionWithAppID:self.connectedAdNetworks[@(GBAdNetworkRevmob)][kGBAdCredentialsRevmobAppID]];
             }
             else {
                 NSAssert(NO, @"GBAds: Didn't pass valid credentials for Revmob");
@@ -74,10 +72,10 @@ _lazy(NSMutableArray, adLogic, _adLogic)
             va_end(args);
             
             if (IsValidString(appID) && IsValidString(appSignature)) {
-                self.connectedAdNetworks[kGBAdNetworkChartboost] = @{kGBAdCredentialsChartboostAppID: appID, kGBAdCredentialsChartboostAppSignature: appSignature};
+                self.connectedAdNetworks[@(GBAdNetworkChartboost)] = @{kGBAdCredentialsChartboostAppID: appID, kGBAdCredentialsChartboostAppSignature: appSignature};
                 
-                [Chartboost sharedChartboost].appId = self.connectedAdNetworks[kGBAdNetworkChartboost][kGBAdCredentialsChartboostAppID];
-                [Chartboost sharedChartboost].appSignature = self.connectedAdNetworks[kGBAdNetworkChartboost][kGBAdCredentialsChartboostAppSignature];
+                [Chartboost sharedChartboost].appId = self.connectedAdNetworks[@(GBAdNetworkChartboost)][kGBAdCredentialsChartboostAppID];
+                [Chartboost sharedChartboost].appSignature = self.connectedAdNetworks[@(GBAdNetworkChartboost)][kGBAdCredentialsChartboostAppSignature];
                 [[Chartboost sharedChartboost] startSession];
             }
             else {
@@ -132,7 +130,7 @@ _lazy(NSMutableArray, adLogic, _adLogic)
     
     switch (network) {
         case GBAdNetworkRevmob: {
-            if (self.connectedAdNetworks[kGBAdNetworkRevmob]) {
+            if (self.connectedAdNetworks[@(GBAdNetworkRevmob)]) {
                 self.revmobAd = [[RevMobAds session] fullscreen];
                 self.revmobAd.delegate = self;
                 [self.revmobAd loadAd];
@@ -145,7 +143,7 @@ _lazy(NSMutableArray, adLogic, _adLogic)
         } break;
             
         case GBAdNetworkChartboost: {
-            if (self.connectedAdNetworks[kGBAdNetworkChartboost]) {
+            if (self.connectedAdNetworks[@(GBAdNetworkChartboost)]) {
                 [Chartboost sharedChartboost].delegate = self;
                 [[Chartboost sharedChartboost] showInterstitial];
             }
