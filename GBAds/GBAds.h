@@ -36,11 +36,20 @@
  Required frameworks:
  * CoreGraphics
  * CoreTelephony
+ * QuartzCore
  * SystemConfiguration
  * AdSupport (optional)//foo not all
  * Storekit
+ * CoreData
+ * libz.dylib
  
- Required 3rd party framworks (make sure project framework search path is correctly set, and that framework is added to project as relative and linked against in build phases):
+ Required 3rd party frameworks (make sure project framework search path is correctly set, that framework is added to project as relative, linked against in build phases):
+ * BugSense-iOS
  * RevMobAds
+ 
+ Required libraries (add dependency, link, -ObjC linker flag, header search path in superproject):
+ * GBToolbox
+ * GBAnalytics
+ * GBVersionTracking
  
 */

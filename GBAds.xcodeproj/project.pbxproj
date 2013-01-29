@@ -42,9 +42,9 @@
 			remoteGlobalIDString = 8A0C4E34165FA60C00A990FB;
 			remoteInfo = GBToolboxUnitTests;
 		};
-		8AF6864716B7F18800FEF6A7 /* PBXContainerItemProxy */ = {
+		8AF687C316B8060100FEF6A7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 8AF6863F16B7F18800FEF6A7 /* GBAnalytics.xcodeproj */;
+			containerPortal = 8AF687BB16B8060100FEF6A7 /* GBAnalytics.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 8A45A82316B7C2C100414137;
 			remoteInfo = GBAnalytics;
@@ -81,10 +81,10 @@
 		8A8EC1DC16B693FE007E268F /* GBAds.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GBAds.m; sourceTree = "<group>"; };
 		8A8EC23D16B69968007E268F /* GBAdsNetworks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBAdsNetworks.h; sourceTree = "<group>"; };
 		8A8EC24116B69FF0007E268F /* GBToolbox.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GBToolbox.xcodeproj; path = "/Users/lm/Dropbox/Projects/VLC Remote/iOS app/VLC Remote iOS/../../../Goonbee Modules/GBToolbox/GBToolbox.xcodeproj"; sourceTree = "<absolute>"; };
-		8AF6863F16B7F18800FEF6A7 /* GBAnalytics.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = GBAnalytics.xcodeproj; sourceTree = "<group>"; };
-		8AF686E816B7FDEF00FEF6A7 /* TapjoyAdvertiserLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = TapjoyAdvertiserLibrary.a; sourceTree = "<group>"; };
-		8AF686E916B7FDEF00FEF6A7 /* TapjoyConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TapjoyConnect.h; sourceTree = "<group>"; };
-		8AF686EA16B7FDEF00FEF6A7 /* TapjoyConnectConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TapjoyConnectConstants.h; sourceTree = "<group>"; };
+		8AF686E816B7FDEF00FEF6A7 /* TapjoyAdvertiserLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = TapjoyAdvertiserLibrary.a; path = GBAds/TapjoyAdvertiserLibrary.a; sourceTree = "<group>"; };
+		8AF686E916B7FDEF00FEF6A7 /* TapjoyConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TapjoyConnect.h; path = GBAds/TapjoyConnect.h; sourceTree = "<group>"; };
+		8AF686EA16B7FDEF00FEF6A7 /* TapjoyConnectConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TapjoyConnectConstants.h; path = GBAds/TapjoyConnectConstants.h; sourceTree = "<group>"; };
+		8AF687BB16B8060100FEF6A7 /* GBAnalytics.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GBAnalytics.xcodeproj; path = ../GBAnalytics/GBAnalytics.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,8 +145,8 @@
 		8A8EC1C716B693FE007E268F = {
 			isa = PBXGroup;
 			children = (
-				8A2CC29516B6AD6C007A2CBA /* Ad Networks */,
 				8A8EC24A16B69FF4007E268F /* Libraries */,
+				8A2CC29516B6AD6C007A2CBA /* Ad Networks */,
 				8A8EC1D716B693FE007E268F /* GBAds */,
 				8A8EC1D416B693FE007E268F /* Frameworks */,
 				8A8EC1D316B693FE007E268F /* Products */,
@@ -205,19 +205,11 @@
 		8A8EC24A16B69FF4007E268F /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				8AF6863F16B7F18800FEF6A7 /* GBAnalytics.xcodeproj */,
+				8AF687BB16B8060100FEF6A7 /* GBAnalytics.xcodeproj */,
 				8A2CC2F416B6C9D0007A2CBA /* GBVersionTracking.xcodeproj */,
 				8A8EC24116B69FF0007E268F /* GBToolbox.xcodeproj */,
 			);
 			name = Libraries;
-			sourceTree = "<group>";
-		};
-		8AF6864016B7F18800FEF6A7 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				8AF6864816B7F18800FEF6A7 /* libGBAnalytics.a */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		8AF686E216B7FDCC00FEF6A7 /* Tapjoy */ = {
@@ -228,6 +220,14 @@
 				8AF686EA16B7FDEF00FEF6A7 /* TapjoyConnectConstants.h */,
 			);
 			name = Tapjoy;
+			sourceTree = "<group>";
+		};
+		8AF687BC16B8060100FEF6A7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8AF687C416B8060100FEF6A7 /* libGBAnalytics.a */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -271,8 +271,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 8AF6864016B7F18800FEF6A7 /* Products */;
-					ProjectRef = 8AF6863F16B7F18800FEF6A7 /* GBAnalytics.xcodeproj */;
+					ProductGroup = 8AF687BC16B8060100FEF6A7 /* Products */;
+					ProjectRef = 8AF687BB16B8060100FEF6A7 /* GBAnalytics.xcodeproj */;
 				},
 				{
 					ProductGroup = 8A8EC24216B69FF0007E268F /* Products */;
@@ -312,11 +312,11 @@
 			remoteRef = 8A8EC24816B69FF0007E268F /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		8AF6864816B7F18800FEF6A7 /* libGBAnalytics.a */ = {
+		8AF687C416B8060100FEF6A7 /* libGBAnalytics.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libGBAnalytics.a;
-			remoteRef = 8AF6864716B7F18800FEF6A7 /* PBXContainerItemProxy */;
+			remoteRef = 8AF687C316B8060100FEF6A7 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
