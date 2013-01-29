@@ -38,7 +38,7 @@
  * CoreTelephony
  * QuartzCore
  * SystemConfiguration
- * AdSupport (optional)//foo not all
+ * AdSupport (optional)
  * Storekit
  * CoreData
  * libz.dylib
