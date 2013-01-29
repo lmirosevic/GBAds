@@ -13,6 +13,9 @@ static NSString *kGBAdCredentialsRevmobAppID = @"kGBAdCredentialsRevmobAppID";
 static NSString *kGBAdCredentialsChartboostAppID = @"kGBAdCredentialsChartboostAppID";
 static NSString *kGBAdCredentialsChartboostAppSignature = @"kGBAdCredentialsChartboostAppSignature";
 
+static NSString *kGBAdCredentialsTapjoyAppID = @"kGBAdCredentialsTapjoyAppID";
+static NSString *kGBAdCredentialsTapjoySecret = @"kGBAdCredentialsTapjoySecret";
+
 
 @interface GBAds ()
 
@@ -50,6 +53,9 @@ _lazy(NSMutableArray, adLogic, _adLogic)
 #pragma mark - Public API
 
 -(void)connectNetwork:(GBAdsNetwork)network withCredentials:(NSString *)credentials, ... {
+    va_list args;
+    va_start(args, credentials);
+    
     switch (network) {
         case GBAdNetworkRevmob: {
             if (IsValidString(credentials)) {
@@ -63,19 +69,14 @@ _lazy(NSMutableArray, adLogic, _adLogic)
         } break;
             
         case GBAdNetworkChartboost: {
-            va_list args;
-            va_start(args, credentials);
-            
             NSString *appID = credentials;
             NSString *appSignature = va_arg(args, NSString *);
-
-            va_end(args);
             
             if (IsValidString(appID) && IsValidString(appSignature)) {
                 self.connectedAdNetworks[@(GBAdNetworkChartboost)] = @{kGBAdCredentialsChartboostAppID: appID, kGBAdCredentialsChartboostAppSignature: appSignature};
                 
-                [Chartboost sharedChartboost].appId = self.connectedAdNetworks[@(GBAdNetworkChartboost)][kGBAdCredentialsChartboostAppID];
-                [Chartboost sharedChartboost].appSignature = self.connectedAdNetworks[@(GBAdNetworkChartboost)][kGBAdCredentialsChartboostAppSignature];
+                [Chartboost sharedChartboost].appId = appID;
+                [Chartboost sharedChartboost].appSignature = appSignature;
                 [[Chartboost sharedChartboost] startSession];
             }
             else {
@@ -84,10 +85,26 @@ _lazy(NSMutableArray, adLogic, _adLogic)
             
         } break;
             
+        case GBAdNetworkTapjoy: {
+            NSString *appID = credentials;
+            NSString *secret = va_arg(args, NSString *);
             
+            if (IsValidString(appID) && IsValidString(secret)) {
+                self.connectedAdNetworks[@(GBAdNetworkTapjoy)] = @{kGBAdCredentialsTapjoyAppID: appID, kGBAdCredentialsTapjoySecret: secret};
+                
+                [TapjoyConnect requestTapjoyConnect:appID secretKey:secret];
+            }
+            else {
+                NSAssert(NO, @"GBAds: Didn't pass valid credentials for Chartboost");
+            }
+            
+        } break;
+                    
         default:
             return;
     }
+    
+    va_end(args);
 }
 
 -(void)configureAdLogic:(GBAdsNetwork)network, ... {
@@ -147,6 +164,17 @@ _lazy(NSMutableArray, adLogic, _adLogic)
             if (self.connectedAdNetworks[@(GBAdNetworkChartboost)]) {
                 [Chartboost sharedChartboost].delegate = self;
                 [[Chartboost sharedChartboost] showInterstitial];
+            }
+            else {
+                l(@"GBAds: Connect to Chartboost first!");
+                
+                [self _internalFail];
+            }
+        } break;
+            
+        case GBAdNetworkTapjoy: {
+            if (self.connectedAdNetworks[@(GBAdNetworkTapjoy)]) {
+                l(@"GBAds: Tapjoy ads not implemented");
             }
             else {
                 l(@"GBAds: Connect to Chartboost first!");

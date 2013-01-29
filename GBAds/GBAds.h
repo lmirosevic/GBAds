@@ -34,6 +34,13 @@
  [[GBAds sharedAds] showAd];
  
  Required frameworks:
- * donno
+ * CoreGraphics
+ * CoreTelephony
+ * SystemConfiguration
+ * AdSupport (optional)//foo not all
+ * Storekit
+ 
+ Required 3rd party framworks (make sure project framework search path is correctly set, and that framework is added to project as relative and linked against in build phases):
+ * RevMobAds
  
 */

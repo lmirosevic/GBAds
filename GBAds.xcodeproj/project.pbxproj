@@ -17,6 +17,7 @@
 		8A8EC1D616B693FE007E268F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A8EC1D516B693FE007E268F /* Foundation.framework */; };
 		8A8EC1DB16B693FE007E268F /* GBAds.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A8EC1DA16B693FE007E268F /* GBAds.h */; };
 		8A8EC1DD16B693FE007E268F /* GBAds.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A8EC1DC16B693FE007E268F /* GBAds.m */; };
+		8AF686EB16B7FDEF00FEF6A7 /* TapjoyAdvertiserLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AF686E816B7FDEF00FEF6A7 /* TapjoyAdvertiserLibrary.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,9 @@
 		8A8EC23D16B69968007E268F /* GBAdsNetworks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBAdsNetworks.h; sourceTree = "<group>"; };
 		8A8EC24116B69FF0007E268F /* GBToolbox.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GBToolbox.xcodeproj; path = "/Users/lm/Dropbox/Projects/VLC Remote/iOS app/VLC Remote iOS/../../../Goonbee Modules/GBToolbox/GBToolbox.xcodeproj"; sourceTree = "<absolute>"; };
 		8AF6863F16B7F18800FEF6A7 /* GBAnalytics.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = GBAnalytics.xcodeproj; sourceTree = "<group>"; };
+		8AF686E816B7FDEF00FEF6A7 /* TapjoyAdvertiserLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = TapjoyAdvertiserLibrary.a; sourceTree = "<group>"; };
+		8AF686E916B7FDEF00FEF6A7 /* TapjoyConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TapjoyConnect.h; sourceTree = "<group>"; };
+		8AF686EA16B7FDEF00FEF6A7 /* TapjoyConnectConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TapjoyConnectConstants.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +100,7 @@
 				8A8EC1D616B693FE007E268F /* Foundation.framework in Frameworks */,
 				8A45A80016B7AAE900414137 /* libChartBoost.a in Frameworks */,
 				8A45A80616B7AAF400414137 /* RevMobAds.framework in Frameworks */,
+				8AF686EB16B7FDEF00FEF6A7 /* TapjoyAdvertiserLibrary.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,8 +110,9 @@
 		8A2CC29516B6AD6C007A2CBA /* Ad Networks */ = {
 			isa = PBXGroup;
 			children = (
-				8A2CC29C16B6AFEE007A2CBA /* Chartboost */,
 				8A2CC29B16B6AFE9007A2CBA /* Revmob */,
+				8A2CC29C16B6AFEE007A2CBA /* Chartboost */,
+				8AF686E216B7FDCC00FEF6A7 /* Tapjoy */,
 			);
 			name = "Ad Networks";
 			sourceTree = "<group>";
@@ -212,6 +218,16 @@
 				8AF6864816B7F18800FEF6A7 /* libGBAnalytics.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		8AF686E216B7FDCC00FEF6A7 /* Tapjoy */ = {
+			isa = PBXGroup;
+			children = (
+				8AF686E816B7FDEF00FEF6A7 /* TapjoyAdvertiserLibrary.a */,
+				8AF686E916B7FDEF00FEF6A7 /* TapjoyConnect.h */,
+				8AF686EA16B7FDEF00FEF6A7 /* TapjoyConnectConstants.h */,
+			);
+			name = Tapjoy;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

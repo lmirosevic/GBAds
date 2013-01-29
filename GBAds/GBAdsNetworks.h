@@ -6,12 +6,14 @@
 //  Copyright (c) 2013 Goonbee. All rights reserved.
 //
 
-#import "ChartBoost.h"
 #import <RevMobAds/RevMobAds.h>
+#import "ChartBoost.h"
+#import "TapjoyConnect.h"
 
 typedef enum {
     GBAdNetworkRevmob = 1,
     GBAdNetworkChartboost,
+    GBAdNetworkTapjoy,
 } GBAdsNetwork;
 
 
@@ -19,3 +21,4 @@ typedef enum {
 //
 // Revmob
 // Chartboost
+// Tapjoy
