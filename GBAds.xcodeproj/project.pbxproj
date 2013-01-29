@@ -12,8 +12,8 @@
 		8A2CC2B516B6B291007A2CBA /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A2CC2B416B6B291007A2CBA /* StoreKit.framework */; };
 		8A2CC2B716B6B298007A2CBA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A2CC2B616B6B298007A2CBA /* CoreGraphics.framework */; };
 		8A2CC2B916B6B2A0007A2CBA /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A2CC2B816B6B2A0007A2CBA /* GameKit.framework */; };
-		8A2CC2FE16B6DD20007A2CBA /* libChartboost.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A2CC2FD16B6DD20007A2CBA /* libChartboost.a */; };
-		8A2CC30016B6DD27007A2CBA /* RevMobAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A2CC2FF16B6DD27007A2CBA /* RevMobAds.framework */; };
+		8A45A80016B7AAE900414137 /* libChartBoost.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A45A7FF16B7AAE900414137 /* libChartBoost.a */; };
+		8A45A80616B7AAF400414137 /* RevMobAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A45A80516B7AAF400414137 /* RevMobAds.framework */; };
 		8A8EC1D616B693FE007E268F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A8EC1D516B693FE007E268F /* Foundation.framework */; };
 		8A8EC1DB16B693FE007E268F /* GBAds.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A8EC1DA16B693FE007E268F /* GBAds.h */; };
 		8A8EC1DD16B693FE007E268F /* GBAds.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A8EC1DC16B693FE007E268F /* GBAds.m */; };
@@ -63,9 +63,9 @@
 		8A2CC2B616B6B298007A2CBA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		8A2CC2B816B6B2A0007A2CBA /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		8A2CC2F416B6C9D0007A2CBA /* GBVersionTracking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GBVersionTracking.xcodeproj; path = "/Users/lm/Dropbox/Projects/VLC Remote/iOS app/VLC Remote iOS/../../../Goonbee Modules/GBVersionTracking/GBVersionTracking.xcodeproj"; sourceTree = "<absolute>"; };
-		8A2CC2FC16B6DD20007A2CBA /* Chartboost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Chartboost.h; path = GBAds/Chartboost.h; sourceTree = "<group>"; };
-		8A2CC2FD16B6DD20007A2CBA /* libChartboost.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libChartboost.a; path = GBAds/libChartboost.a; sourceTree = "<group>"; };
-		8A2CC2FF16B6DD27007A2CBA /* RevMobAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RevMobAds.framework; path = GBAds/RevMobAds.framework; sourceTree = "<group>"; };
+		8A45A7FE16B7AAE900414137 /* ChartBoost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChartBoost.h; sourceTree = "<group>"; };
+		8A45A7FF16B7AAE900414137 /* libChartBoost.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libChartBoost.a; sourceTree = "<group>"; };
+		8A45A80516B7AAF400414137 /* RevMobAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RevMobAds.framework; sourceTree = "<group>"; };
 		8A8EC1D216B693FE007E268F /* libGBAds.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libGBAds.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A8EC1D516B693FE007E268F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8A8EC1D916B693FE007E268F /* GBAds-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GBAds-Prefix.pch"; sourceTree = "<group>"; };
@@ -86,8 +86,8 @@
 				8A2CC2B316B6B28B007A2CBA /* SystemConfiguration.framework in Frameworks */,
 				8A2CC2B116B6B287007A2CBA /* QuartzCore.framework in Frameworks */,
 				8A8EC1D616B693FE007E268F /* Foundation.framework in Frameworks */,
-				8A2CC2FE16B6DD20007A2CBA /* libChartboost.a in Frameworks */,
-				8A2CC30016B6DD27007A2CBA /* RevMobAds.framework in Frameworks */,
+				8A45A80016B7AAE900414137 /* libChartBoost.a in Frameworks */,
+				8A45A80616B7AAF400414137 /* RevMobAds.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,7 +106,7 @@
 		8A2CC29B16B6AFE9007A2CBA /* Revmob */ = {
 			isa = PBXGroup;
 			children = (
-				8A2CC2FF16B6DD27007A2CBA /* RevMobAds.framework */,
+				8A45A80516B7AAF400414137 /* RevMobAds.framework */,
 			);
 			name = Revmob;
 			sourceTree = "<group>";
@@ -114,8 +114,8 @@
 		8A2CC29C16B6AFEE007A2CBA /* Chartboost */ = {
 			isa = PBXGroup;
 			children = (
-				8A2CC2FC16B6DD20007A2CBA /* Chartboost.h */,
-				8A2CC2FD16B6DD20007A2CBA /* libChartboost.a */,
+				8A45A7FE16B7AAE900414137 /* ChartBoost.h */,
+				8A45A7FF16B7AAE900414137 /* libChartBoost.a */,
 			);
 			name = Chartboost;
 			sourceTree = "<group>";

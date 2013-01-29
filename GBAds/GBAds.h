@@ -10,9 +10,6 @@
 
 #import "GBAdsNetworks.h"
 
-#import "ChartBoost.h"
-#import <RevMobAds/RevMobAds.h>
-
 @interface GBAds : NSObject <RevMobAdsDelegate, ChartboostDelegate>
 
 @property (assign, nonatomic) BOOL      adsEnabled;                                             //defaults to YES

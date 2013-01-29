@@ -6,14 +6,16 @@
 //  Copyright (c) 2013 Goonbee. All rights reserved.
 //
 
+#import "ChartBoost.h"
+#import <RevMobAds/RevMobAds.h>
+
+typedef enum {
+    GBAdNetworkRevmob = 1,
+    GBAdNetworkChartboost,
+} GBAdsNetwork;
 
 
 // Network support:
 //
 // Revmob
 // Chartboost
-
-typedef enum {
-    GBAdNetworkRevmob = 1,
-    GBAdNetworkChartboost,
-} GBAdsNetwork;
