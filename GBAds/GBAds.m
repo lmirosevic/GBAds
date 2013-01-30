@@ -23,6 +23,7 @@ static NSString *kGBAdCredentialsTapjoySecret = @"kGBAdCredentialsTapjoySecret";
 @property (strong, nonatomic) NSMutableArray                        *adLogic;
 @property (assign, nonatomic) BOOL                                  isInProcess;
 @property (assign, nonatomic) NSUInteger                            nextAttempt;
+@property (assign, nonatomic) BOOL                                  enableDebugLogging;
 
 //Ad network specific
 @property (strong, nonatomic) RevMobFullscreen                      *revmobAd;
@@ -45,6 +46,7 @@ _lazy(NSMutableArray, adLogic, _adLogic)
         self.adsEnabled = YES;
         self.showAdsDuringFirstSession = YES;
         self.nextAttempt = 0;
+        self.enableDebugLogging = NO;
     }
     
     return self;
@@ -52,16 +54,18 @@ _lazy(NSMutableArray, adLogic, _adLogic)
 
 #pragma mark - Public API
 
--(void)connectNetwork:(GBAdsNetwork)network withCredentials:(NSString *)credentials, ... {
++(void)connectNetwork:(GBAdsNetwork)network withCredentials:(NSString *)credentials, ... {
+    [self _debugLogConnectNetwork:network];
+    
     va_list args;
     va_start(args, credentials);
     
     switch (network) {
         case GBAdNetworkRevmob: {
             if (IsValidString(credentials)) {
-                self.connectedAdNetworks[@(GBAdNetworkRevmob)] = @{kGBAdCredentialsRevmobAppID: credentials};
+                [GBAds sharedAds].connectedAdNetworks[@(GBAdNetworkRevmob)] = @{kGBAdCredentialsRevmobAppID: credentials};
                 
-                [RevMobAds startSessionWithAppID:self.connectedAdNetworks[@(GBAdNetworkRevmob)][kGBAdCredentialsRevmobAppID]];
+                [RevMobAds startSessionWithAppID:[GBAds sharedAds].connectedAdNetworks[@(GBAdNetworkRevmob)][kGBAdCredentialsRevmobAppID]];
             }
             else {
                 NSAssert(NO, @"GBAds: Didn't pass valid credentials for Revmob");
@@ -73,7 +77,7 @@ _lazy(NSMutableArray, adLogic, _adLogic)
             NSString *appSignature = va_arg(args, NSString *);
             
             if (IsValidString(appID) && IsValidString(appSignature)) {
-                self.connectedAdNetworks[@(GBAdNetworkChartboost)] = @{kGBAdCredentialsChartboostAppID: appID, kGBAdCredentialsChartboostAppSignature: appSignature};
+                [GBAds sharedAds].connectedAdNetworks[@(GBAdNetworkChartboost)] = @{kGBAdCredentialsChartboostAppID: appID, kGBAdCredentialsChartboostAppSignature: appSignature};
                 
                 [Chartboost sharedChartboost].appId = appID;
                 [Chartboost sharedChartboost].appSignature = appSignature;
@@ -90,7 +94,7 @@ _lazy(NSMutableArray, adLogic, _adLogic)
             NSString *secret = va_arg(args, NSString *);
             
             if (IsValidString(appID) && IsValidString(secret)) {
-                self.connectedAdNetworks[@(GBAdNetworkTapjoy)] = @{kGBAdCredentialsTapjoyAppID: appID, kGBAdCredentialsTapjoySecret: secret};
+                [GBAds sharedAds].connectedAdNetworks[@(GBAdNetworkTapjoy)] = @{kGBAdCredentialsTapjoyAppID: appID, kGBAdCredentialsTapjoySecret: secret};
                 
                 [TapjoyConnect requestTapjoyConnect:appID secretKey:secret];
             }
@@ -107,26 +111,26 @@ _lazy(NSMutableArray, adLogic, _adLogic)
     va_end(args);
 }
 
--(void)configureAdLogic:(GBAdsNetwork)network, ... {
-    [self.adLogic removeAllObjects];
++(void)configureAdLogic:(GBAdsNetwork)network, ... {
+    [[GBAds sharedAds].adLogic removeAllObjects];
     
     va_list args;
     va_start(args, network);
     
     for (GBAdsNetwork adNetwork = network; adNetwork != 0; adNetwork = va_arg(args, GBAdsNetwork)) {
-        [self.adLogic addObject:@(adNetwork)];
+        [[GBAds sharedAds].adLogic addObject:@(adNetwork)];
     }
     
     va_end(args);
 }
 
--(void)showAd {
-    if (!self.isInProcess && self.adsEnabled && !([GBVersionTracking isFirstLaunchEver] && (self.showAdsDuringFirstSession == NO))) {
++(void)showAd {
+    if (![GBAds sharedAds].isInProcess && [GBAds sharedAds].adsEnabled && !([GBVersionTracking isFirstLaunchEver] && ([GBAds sharedAds].showAdsDuringFirstSession == NO))) {
         //reset next
-        self.nextAttempt = 0;
+        [GBAds sharedAds].nextAttempt = 0;
         
         //execute first ad code
-        [self _attemptToShowNextAd];
+        [[GBAds sharedAds] _attemptToShowNextAd];
     }
 }
 
@@ -233,6 +237,38 @@ _lazy(NSMutableArray, adLogic, _adLogic)
 -(void)_internalFail {
     _t(@"GBAds: Internal Fail");
     [self _adFail];
+}
+
+#pragma mark - Debug Logging
+
++(void)enableDebug:(BOOL)enable {
+    [GBAds sharedAds].enableDebugLogging = enable;
+}
+
++(void)_debugLogConnectNetwork:(GBAdsNetwork)network {
+    if ([GBAds sharedAds].enableDebugLogging) {
+        NSString *networkName;
+        
+        switch (network) {
+            case GBAdNetworkRevmob:
+                networkName = @"Revmob";
+                break;
+                
+            case GBAdNetworkChartboost:
+                networkName = @"Chartboost";
+                break;
+                
+            case GBAdNetworkTapjoy:
+                networkName = @"Tapjoy";
+                break;
+                
+            default:
+                networkName = @"Unkown Network";
+                break;
+        }
+        
+        l(@"GBAds Log: connected to ad network: %@", networkName);
+    }
 }
 
 @end
