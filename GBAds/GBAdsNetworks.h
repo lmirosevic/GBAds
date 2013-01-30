@@ -17,8 +17,18 @@ typedef enum {
 } GBAdsNetwork;
 
 
-// Network support:
-//
-// Revmob
-// Chartboost
-// Tapjoy
+/* Networks
+ 
+ RevMob
+   Params: RevmobAppID
+   Example: [GBAds connectNetwork:GBAdNetworkRevmob withCredentials:@"RevmobAppID"];
+ 
+ Chartboost
+   Params: ChartboostAppID, ChartboostAppSig
+   Example: [GBAds connectNetwork:GBAdNetworkChartboost withCredentials:@"ChartboostAppID", @"ChartboostAppSig"];
+ 
+ Tapjoy
+   Params: TapjoyAppId, TapjoySecret
+   Example: [GBAds connectNetwork:GBAdNetworkTapjoy withCredentials:@"TapjoyAppId", @"TapjoySecret"];
+ 
+ */

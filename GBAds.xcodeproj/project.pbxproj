@@ -74,7 +74,6 @@
 		8A45A7FE16B7AAE900414137 /* ChartBoost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChartBoost.h; path = GBAds/ChartBoost.h; sourceTree = "<group>"; };
 		8A45A7FF16B7AAE900414137 /* libChartBoost.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libChartBoost.a; path = GBAds/libChartBoost.a; sourceTree = "<group>"; };
 		8A45A80516B7AAF400414137 /* RevMobAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RevMobAds.framework; path = GBAds/RevMobAds.framework; sourceTree = "<group>"; };
-		8A7D614716B9249900D6C676 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		8A8EC1D216B693FE007E268F /* libGBAds.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libGBAds.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A8EC1D516B693FE007E268F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8A8EC1D916B693FE007E268F /* GBAds-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GBAds-Prefix.pch"; sourceTree = "<group>"; };
@@ -146,7 +145,6 @@
 		8A8EC1C716B693FE007E268F = {
 			isa = PBXGroup;
 			children = (
-				8A7D614716B9249900D6C676 /* README.md */,
 				8A8EC24A16B69FF4007E268F /* Libraries */,
 				8A2CC29516B6AD6C007A2CBA /* Ad Networks */,
 				8A8EC1D716B693FE007E268F /* GBAds */,

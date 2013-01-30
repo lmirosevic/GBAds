@@ -12,13 +12,14 @@
 
 @interface GBAds : NSObject <RevMobAdsDelegate, ChartboostDelegate>
 
-@property (assign, nonatomic) BOOL      adsEnabled;                                             //defaults to YES
-@property (assign, nonatomic) BOOL      showAdsDuringFirstSession;                              //defaults to YES
-
+//Basic API
 +(void)connectNetwork:(GBAdsNetwork)network withCredentials:(NSString *)credentials, ...;
 +(void)configureAdLogic:(GBAdsNetwork)network, ...;                                             //[GBAds configureAdLogic:GBAdNetworkRevmob, GBAdNetworkRevmob, GBAdNetworkRevmob, GBAdNetworkChartboost, GBAdNetworkChartboost, 0];
 +(void)showAd;
 
-+(void)enableDebug:(BOOL)enable;
+//Options
++(void)enableDebug:(BOOL)enable;                //defaults to NO
++(void)enableAds:(BOOL)enable;                  //defaults to YES
++(void)showAdsDuringFirstSession:(BOOL)enable;  //defaults to YES
 
 @end

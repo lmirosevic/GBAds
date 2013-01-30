@@ -19,6 +19,9 @@ static NSString *kGBAdCredentialsTapjoySecret = @"kGBAdCredentialsTapjoySecret";
 
 @interface GBAds ()
 
+
+@property (assign, nonatomic) BOOL                                  adsEnabled;
+@property (assign, nonatomic) BOOL                                  showAdsDuringFirstSession;
 @property (strong, nonatomic) NSMutableDictionary                   *connectedAdNetworks;
 @property (strong, nonatomic) NSMutableArray                        *adLogic;
 @property (assign, nonatomic) BOOL                                  isInProcess;
@@ -241,10 +244,6 @@ _lazy(NSMutableArray, adLogic, _adLogic)
 
 #pragma mark - Debug Logging
 
-+(void)enableDebug:(BOOL)enable {
-    [GBAds sharedAds].enableDebugLogging = enable;
-}
-
 +(void)_debugLogConnectNetwork:(GBAdsNetwork)network {
     if ([GBAds sharedAds].enableDebugLogging) {
         NSString *networkName;
@@ -269,6 +268,20 @@ _lazy(NSMutableArray, adLogic, _adLogic)
         
         l(@"GBAds Log: connected to ad network: %@", networkName);
     }
+}
+
+#pragma mark - Options
+
++(void)enableDebug:(BOOL)enable {
+    [GBAds sharedAds].enableDebugLogging = enable;
+}
+
++(void)enableAds:(BOOL)enable{
+    [GBAds sharedAds].adsEnabled = enable;
+}
+
++(void)showAdsDuringFirstSession:(BOOL)enable {
+    [GBAds sharedAds].showAdsDuringFirstSession = enable;
 }
 
 @end
