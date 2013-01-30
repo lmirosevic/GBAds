@@ -1,7 +1,7 @@
 GBAds
 ============
 
-Abstracts away different interstitial ad network implementations and implementes simple mediation logic for maximising fill rates
+Abstracts away different interstitial ad network implementations and implements simple mediation logic for maximising fill rates
 
 Usage
 ------------
