@@ -54,9 +54,9 @@ Dependencies
 
 Static libraries (Add dependency, link, -ObjC linker flag, header search path in superproject):
 
-* GBToolbox
-* GBAnalytics
-* GBVersionTracking
+* [GBToolbox](https://github.com/lmirosevic/GBToolbox)
+* [GBAnalytics](https://github.com/lmirosevic/GBAnalytics)
+* [GBVersionTracking](https://github.com/lmirosevic/GBVersionTracking)
 
 System Frameworks (link them in):
 
