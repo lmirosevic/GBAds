@@ -42,6 +42,34 @@
 			remoteGlobalIDString = 8A0C4E34165FA60C00A990FB;
 			remoteInfo = GBToolboxUnitTests;
 		};
+		8ACE94A016C1253100527E0D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8AF687BB16B8060100FEF6A7 /* GBAnalytics.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 8A45A82216B7C2C100414137;
+			remoteInfo = GBAnalytics;
+		};
+		8ACE94A616C1253100527E0D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8A8EC24116B69FF0007E268F /* GBToolbox.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8A0377FB16BFCD2F0096C448;
+			remoteInfo = GBToolbox.framework;
+		};
+		8ACE94A916C1253300527E0D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8A8EC24116B69FF0007E268F /* GBToolbox.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 8AD911B0162D9E2200C9D287;
+			remoteInfo = libGBToolbox.a;
+		};
+		8ACE94AB16C1253700527E0D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8A2CC2F416B6C9D0007A2CBA /* GBVersionTracking.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 8A2CC2C416B6B987007A2CBA;
+			remoteInfo = GBVersionTracking;
+		};
 		8AF687C316B8060100FEF6A7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 8AF687BB16B8060100FEF6A7 /* GBAnalytics.xcodeproj */;
@@ -198,6 +226,7 @@
 			children = (
 				8A8EC24716B69FF0007E268F /* libGBToolbox.a */,
 				8A8EC24916B69FF0007E268F /* GBToolboxUnitTests.octest */,
+				8ACE94A716C1253100527E0D /* GBToolbox.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -244,6 +273,9 @@
 			buildRules = (
 			);
 			dependencies = (
+				8ACE94AC16C1253700527E0D /* PBXTargetDependency */,
+				8ACE94AA16C1253300527E0D /* PBXTargetDependency */,
+				8ACE94A116C1253100527E0D /* PBXTargetDependency */,
 			);
 			name = GBAds;
 			productName = GBAds;
@@ -312,6 +344,13 @@
 			remoteRef = 8A8EC24816B69FF0007E268F /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		8ACE94A716C1253100527E0D /* GBToolbox.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = GBToolbox.framework;
+			remoteRef = 8ACE94A616C1253100527E0D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		8AF687C416B8060100FEF6A7 /* libGBAnalytics.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -331,6 +370,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8ACE94A116C1253100527E0D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = GBAnalytics;
+			targetProxy = 8ACE94A016C1253100527E0D /* PBXContainerItemProxy */;
+		};
+		8ACE94AA16C1253300527E0D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = libGBToolbox.a;
+			targetProxy = 8ACE94A916C1253300527E0D /* PBXContainerItemProxy */;
+		};
+		8ACE94AC16C1253700527E0D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = GBVersionTracking;
+			targetProxy = 8ACE94AB16C1253700527E0D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		8A8EC1DE16B693FE007E268F /* Debug */ = {
