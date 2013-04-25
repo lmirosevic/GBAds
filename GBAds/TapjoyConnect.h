@@ -17,7 +17,7 @@
 #import "TapjoyConnectConstants.h"
 
 
-#define TJC_LIBRARY_VERSION_NUMBER			@"9.0.1"				/*!< The SDK version number. */
+#define TJC_LIBRARY_VERSION_NUMBER			@"9.0.3"				/*!< The SDK version number. */
 
 @interface TJCAdView : UIView <UIWebViewDelegate>
 @end
@@ -561,6 +561,14 @@ withCurrencySelector:(BOOL)isSelectorVisible TJC_DEPRECATION_WARNING;
  *	\return n/a
  */
 + (void)initVideoAdWithDelegate:(id<TJCVideoAdDelegate>)delegate TJC_DEPRECATION_WARNING;
+
+/*!	\fn setVideoAdDelegate:(id<TJCVideoAdDelegate>)delegate
+ *	\brief Sets the class that implements the TJCVideoAdDelegate protocol.
+ *
+ *	\param delegate The class that implements the TJCVideoAdDelegate protocol.
+ *	\return n/a
+ */
++ (void)setVideoAdDelegate:(id<TJCVideoAdDelegate>)delegate;
 
 /*!	\fn cacheVideosWithDelegate:(id<TJCVideoAdDelegate>)delegate
  *	\brief Begins the caching process if auto caching is disabled.
