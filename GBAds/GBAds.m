@@ -128,7 +128,7 @@ _lazy(NSMutableArray, adLogic, _adLogic)
 }
 
 +(void)showAd {
-    if (![GBAds sharedAds].isInProcess && [GBAds sharedAds].adsEnabled && !([GBVersionTracking isFirstLaunchEver] && ([GBAds sharedAds].showAdsDuringFirstSession == NO))) {
+    if (![GBAds sharedAds].isInProcess && !([GBVersionTracking isFirstLaunchEver] && ([GBAds sharedAds].showAdsDuringFirstSession == NO))) {
         //reset next
         [GBAds sharedAds].nextAttempt = 0;
         
@@ -208,30 +208,57 @@ _lazy(NSMutableArray, adLogic, _adLogic)
 #pragma mark - Revmob delegate
 
 -(void)revmobAdDidReceive {
-    [self.revmobAd showAd];
+    _t(@"GBAds: Revmob Ad loaded");
+    if ([GBAds sharedAds].adsEnabled) {
+        _t(@"GBAds: Revmob Ad will show");
+        
+        [self.revmobAd showAd];
+    }
 }
 
-- (void)revmobAdDisplayed {
-    _t(@"GBAds: Revmob Success");
+-(void)revmobAdDisplayed {
+    _t(@"GBAds: Revmob Ad displayed");
     [self _adSuccess];
 }
 
-- (void)revmobAdDidFailWithError:(NSError *)error {
+-(void)revmobAdDidFailWithError:(NSError *)error {
     _t(@"GBAds: Revmob Fail");
     [self _adFail];
+}
+
+-(void)revmobUserClosedTheAd {
+    _t(@"GBAds: Revmob user closed ad");
+}
+
+-(void)revmobUserClickedInTheAd {
+    _t(@"GBAds: Revmob user clicked in ad");
 }
 
 #pragma mark - Chartboost delegate
 
 -(BOOL)shouldDisplayInterstitial:(NSString *)location {
-    _t(@"GBAds: Chartboost Success");
-    [self _adSuccess];
+    _t(@"GBAds: Chartboost Ad loaded");
+    if (self.adsEnabled) {
+        _t(@"GBAds: Chartboost Ad will show");
+        [self _adSuccess];
     
-    return YES;
+        return YES;
+    }
+    else {
+        return NO;
+    }
+}
+
+-(void)didCloseInterstitial:(NSString *)location {
+    _t(@"GBAds: Chartboost user closed ad");
+}
+
+-(void)didClickInterstitial:(NSString *)location {
+    _t(@"GBAds: Chartboost user clicked in ad");
 }
 
 -(void)didFailToLoadInterstitial:(NSString *)location {
-    _t(@"GBAds: Chartboost Fail");
+    _t(@"GBAds: Chartboost failed to load");
     [self _adFail];
 }
 
