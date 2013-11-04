@@ -120,7 +120,7 @@ _lazy(NSMutableArray, adLogic, _adLogic)
     va_list args;
     va_start(args, network);
     
-    for (GBAdsNetwork adNetwork = network; adNetwork != 0; adNetwork = va_arg(args, GBAdsNetwork)) {
+    for (GBAdsNetwork adNetwork = network; adNetwork != nil; adNetwork = va_arg(args, GBAdsNetwork)) {
         [[GBAds sharedAds].adLogic addObject:@(adNetwork)];
     }
     
