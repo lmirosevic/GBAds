@@ -71,7 +71,7 @@ _lazy(NSMutableArray, adLogic, _adLogic)
                 [RevMobAds startSessionWithAppID:[GBAds sharedAds].connectedAdNetworks[@(GBAdNetworkRevmob)][kGBAdCredentialsRevmobAppID]];
             }
             else {
-                NSAssert(NO, @"GBAds: Didn't pass valid credentials for Revmob");
+                @throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"GBAds: Didn't pass valid credentials for Revmob" userInfo:nil];
             }
         } break;
             
@@ -87,7 +87,7 @@ _lazy(NSMutableArray, adLogic, _adLogic)
                 [[Chartboost sharedChartboost] startSession];
             }
             else {
-                NSAssert(NO, @"GBAds: Didn't pass valid credentials for Chartboost");
+                @throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"GBAds: Didn't pass valid credentials for Chartboost" userInfo:nil];
             }
             
         } break;
@@ -102,7 +102,7 @@ _lazy(NSMutableArray, adLogic, _adLogic)
                 [TapjoyConnect requestTapjoyConnect:appID secretKey:secret];
             }
             else {
-                NSAssert(NO, @"GBAds: Didn't pass valid credentials for Chartboost");
+                @throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"GBAds: Didn't pass valid credentials for TapJoy" userInfo:nil];
             }
             
         } break;
