@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = 'GBAds'
-  s.version      = '1.0.0'
+  s.version      = '1.0.1'
   s.summary      = 'Abstracts away different interstitial ad network implementations and implements simple mediation logic for maximising fill rates.'
   s.homepage     = 'https://github.com/lmirosevic/GBAds'
   s.license      = 'Apache License, Version 2.0'
@@ -13,5 +13,9 @@ Pod::Spec.new do |s|
 
   s.dependency 'ChartboostSDK', '~> 5.0'
   s.dependency 'TapjoySDK', '~> 10.1'
-  s.dependency 'RevMob', '~> 8.0'
+  s.dependency 'RevMob-Goonbee', '~> 8.0'
+
+  s.dependency 'GBVersionTracking', '~> 1.2'
+  s.dependency 'GBAnalytics', '~> 2.6'
+  s.dependency 'GBToolbox'
 end

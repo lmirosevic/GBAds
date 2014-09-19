@@ -14,7 +14,8 @@
 
 //Basic API
 +(void)connectNetwork:(GBAdsNetwork)network withCredentials:(NSString *)credentials, ...;
-+(void)configureAdLogic:(GBAdsNetwork)network, ... NS_REQUIRES_NIL_TERMINATION;                                             //[GBAds configureAdLogic:GBAdNetworkRevmob, GBAdNetworkRevmob, GBAdNetworkRevmob, GBAdNetworkChartboost, GBAdNetworkChartboost, nil];
++(void)configureAdLogic:(GBAdsNetwork)network, ... NS_REQUIRES_NIL_TERMINATION;
+//[GBAds configureAdLogic:GBAdNetworkRevmob, GBAdNetworkRevmob, GBAdNetworkRevmob, GBAdNetworkChartboost, GBAdNetworkChartboost, nil];
 +(void)showAd;
 
 //Options

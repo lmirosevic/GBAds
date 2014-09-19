@@ -8,6 +8,10 @@
 
 #import "GBAds.h"
 
+#import <GBToolbox/GBToolbox.h>
+#import <GBVersionTracking/GBVersionTracking.h>
+#import <GBAnalytics/GBAnalytics.h>
+
 static NSString *kGBAdCredentialsRevmobAppID = @"kGBAdCredentialsRevmobAppID";
 
 static NSString *kGBAdCredentialsChartboostAppID = @"kGBAdCredentialsChartboostAppID";
@@ -82,9 +86,7 @@ _lazy(NSMutableArray, adLogic, _adLogic)
             if (IsValidString(appID) && IsValidString(appSignature)) {
                 [GBAds sharedAds].connectedAdNetworks[@(GBAdNetworkChartboost)] = @{kGBAdCredentialsChartboostAppID: appID, kGBAdCredentialsChartboostAppSignature: appSignature};
                 
-                [Chartboost sharedChartboost].appId = appID;
-                [Chartboost sharedChartboost].appSignature = appSignature;
-                [[Chartboost sharedChartboost] startSession];
+                [Chartboost startWithAppId:appID appSignature:appSignature delegate:[self sharedAds]];
             }
             else {
                 @throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"GBAds: Didn't pass valid credentials for Chartboost" userInfo:nil];
@@ -99,7 +101,7 @@ _lazy(NSMutableArray, adLogic, _adLogic)
             if (IsValidString(appID) && IsValidString(secret)) {
                 [GBAds sharedAds].connectedAdNetworks[@(GBAdNetworkTapjoy)] = @{kGBAdCredentialsTapjoyAppID: appID, kGBAdCredentialsTapjoySecret: secret};
                 
-                [TapjoyConnect requestTapjoyConnect:appID secretKey:secret];
+                [Tapjoy requestTapjoyConnect:appID secretKey:secret];
             }
             else {
                 @throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"GBAds: Didn't pass valid credentials for TapJoy" userInfo:nil];
@@ -114,13 +116,13 @@ _lazy(NSMutableArray, adLogic, _adLogic)
     va_end(args);
 }
 
-+(void)configureAdLogic:(GBAdsNetwork)network, ... {
++(void)configureAdLogic:(GBAdsNetwork)network, ... NS_REQUIRES_NIL_TERMINATION {
     [[GBAds sharedAds].adLogic removeAllObjects];
     
     va_list args;
     va_start(args, network);
     
-    for (GBAdsNetwork adNetwork = network; adNetwork != nil; adNetwork = va_arg(args, GBAdsNetwork)) {
+    for (GBAdsNetwork adNetwork = network; adNetwork != 0; adNetwork = va_arg(args, GBAdsNetwork)) {
         [[GBAds sharedAds].adLogic addObject:@(adNetwork)];
     }
     
@@ -169,8 +171,7 @@ _lazy(NSMutableArray, adLogic, _adLogic)
             
         case GBAdNetworkChartboost: {
             if (self.connectedAdNetworks[@(GBAdNetworkChartboost)]) {
-                [Chartboost sharedChartboost].delegate = self;
-                [[Chartboost sharedChartboost] showInterstitial];
+                [Chartboost showInterstitial:CBLocationDefault];
             }
             else {
                 l(@"GBAds: Connect to Chartboost first!");
