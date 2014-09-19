@@ -1,5 +1,4 @@
-GBAds
-============
+# GBAds ![Version](https://img.shields.io/cocoapods/v/GBAds.svg?style=flat)&nbsp;![License](https://img.shields.io/badge/license-Apache_2-green.svg?style=flat)
 
 Abstracts away different interstitial ad network implementations and implements simple mediation logic for maximising fill rates
 
@@ -16,7 +15,7 @@ Usage
 First import header:
 
 ```objective-c
-#import "GBAds.h"
+#import <GBAds/GBAds.h>
 ```
 
 Connect to any networks you may want to mediate between in `application:didFinishLaunching:withOptions:`
@@ -55,36 +54,17 @@ Options:
 Dependencies
 ------------
 
-Static libraries (Add dependency, link, -ObjC linker flag, header search path in superproject):
-
 * [GBToolbox](https://github.com/lmirosevic/GBToolbox)
 * [GBAnalytics](https://github.com/lmirosevic/GBAnalytics)
 * [GBVersionTracking](https://github.com/lmirosevic/GBVersionTracking)
 
-System Frameworks (link them in):
-
-* CoreGraphics
-* CoreTelephony (optional)
-* QuartzCore
-* SystemConfiguration
-* AdSupport (optional)
-* Storekit
-* CoreData
-* libz.dylib
-
-3rd party frameworks included (make sure project framework search path is correctly set, that framework is added to project as relative link, linked against in build phases of superproject):
-* BugSense-iOS
-* RevMobAds
-
 Copyright & License
 ------------
 
-Copyright 2013 Luka Mirosevic
+Copyright 2014 Luka Mirosevic
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this work except in compliance with the License. You may obtain a copy of the License in the LICENSE file, or at:
 
 http://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/lmirosevic/gbads/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
