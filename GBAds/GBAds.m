@@ -75,7 +75,7 @@ _lazy(NSMutableArray, adLogic, _adLogic)
                 [RevMobAds startSessionWithAppID:[GBAds sharedAds].connectedAdNetworks[@(GBAdNetworkRevmob)][kGBAdCredentialsRevmobAppID]];
             }
             else {
-                @throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"GBAds: Didn't pass valid credentials for Revmob" userInfo:nil];
+                @throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"GBAds: Didn't pass valid credentials for RevMob" userInfo:nil];
             }
         } break;
             
@@ -163,7 +163,7 @@ _lazy(NSMutableArray, adLogic, _adLogic)
                 [self.revmobAd loadAd];
             }
             else {
-                l(@"GBAds: Connect to Revmob first!");
+                l(@"GBAds: Connect to RevBob first!");
                 
                 [self _internalFail];
             }
@@ -211,28 +211,28 @@ _lazy(NSMutableArray, adLogic, _adLogic)
 -(void)revmobAdDidReceive {
     _t(@"GBAds: Revmob Ad loaded");
     if ([GBAds sharedAds].adsEnabled) {
-        _t(@"GBAds: Revmob Ad will show");
+        _t(@"GBAds: RevMob Ad will show");
         
         [self.revmobAd showAd];
     }
 }
 
 -(void)revmobAdDisplayed {
-    _t(@"GBAds: Revmob Ad displayed");
+    _t(@"GBAds: RevMob Ad displayed");
     [self _adSuccess];
 }
 
 -(void)revmobAdDidFailWithError:(NSError *)error {
-    _t(@"GBAds: Revmob Fail");
+    _t(@"GBAds: RevMob Fail");
     [self _adFail];
 }
 
 -(void)revmobUserClosedTheAd {
-    _t(@"GBAds: Revmob user closed ad");
+    _t(@"GBAds: RevMob user closed ad");
 }
 
 -(void)revmobUserClickedInTheAd {
-    _t(@"GBAds: Revmob user clicked in ad");
+    _t(@"GBAds: RevMob user clicked in ad");
 }
 
 #pragma mark - Chartboost delegate
