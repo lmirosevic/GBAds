@@ -16,6 +16,6 @@ Pod::Spec.new do |s|
   s.dependency 'RevMob-Goonbee', '~> 8.0'
 
   s.dependency 'GBVersionTracking', '~> 1.2'
-  s.dependency 'GBAnalytics', '~> 2.6'
+  s.dependency 'GBAnalytics', '~> 4.0'
   s.dependency 'GBToolbox'
 end

@@ -42,7 +42,7 @@ static NSString *kGBAdCredentialsTapjoySecret = @"kGBAdCredentialsTapjoySecret";
 
 #pragma mark - Storage
 
-_singleton(GBAds, sharedAds)
+_singleton(sharedAds)
 _lazy(NSMutableDictionary, connectedAdNetworks, _connectedAdNetworks)
 _lazy(NSMutableArray, adLogic, _adLogic)
 
