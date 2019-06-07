@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = 'GBAds'
-  s.version      = '1.0.2'
+  s.version      = '1.1.0'
   s.summary      = 'Abstracts away different interstitial ad network implementations and implements simple mediation logic for maximising fill rates.'
   s.homepage     = 'https://github.com/lmirosevic/GBAds'
   s.license      = 'Apache License, Version 2.0'
