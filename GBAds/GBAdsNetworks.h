@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 Goonbee. All rights reserved.
 //
 
-#import <ChartBoostSDK/Chartboost.h>
-#import <TapjoySDK/Tapjoy.h>
-#import <RevMob-Goonbee/RevMobAds.h>
+#import <ChartBoost/Chartboost.h>
+#import <Tapjoy/Tapjoy.h>
+#import <RevMobAds/RevMobAds.h>
 
 typedef enum {
     GBAdNetworkRevmob = 1,
